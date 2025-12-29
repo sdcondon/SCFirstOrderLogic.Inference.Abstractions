@@ -2,13 +2,55 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <RootNamespace>SCFirstOrderLogic.Inference</RootNamespace>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>    
+      
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>SCFirstOrderLogic.Inference.Abstractions</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>SCFirstOrderLogic-128.png</PackageIcon>
+    <PackageTags>first order predicate logic quantificational calculus</PackageTags>
+    <PackageReleaseNotes>See https://github.com/sdcondon/SCFirstOrderLogic.Inference.Abstractions/releases.</PackageReleaseNotes>
+    <PackageProjectUrl>https://sdcondon.net/SCFirstOrderLogic/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      
+    <Authors>Simon Condon</Authors>
+    <Copyright>2025 Simon Condon</Copyright>
+    <Company />
+    <Product>SCFirstOrderLogic</Product>     
+    <Description>Some abstractions for use by FoL knowledge bases that use the models in SCFirstOrderLogic.</Description>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/sdcondon/SCFirstOrderLogic.Inference.Abstractions.git</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>     
+
+    <!-- NB: timestamp below doesn't include seconds because depending on such a package gets VS into an infinite restore loop.. -->
+    <Version>0.0.0-local.$([System.DateTime]::Now.ToString(yyMMddTHHmm))</Version>
+    <!-- Will make this cleverer if anyone else starts contributing to this (look for local package sources with Powershell, maybe?) -->
+    <LocalPackageSource>$(UserProfile)\Coding\Packages</LocalPackageSource>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' != 'true' And Exists('$(LocalPackageSource)')">
+    <PackageOutputPath>$(LocalPackageSource)</PackageOutputPath>
+  </PropertyGroup>
+    
   <ItemGroup>
-    <PackageReference Include="SCFirstOrderLogic" Version="8.0.0-pre.2" />
+    <None Include="_PackageFiles\SCFirstOrderLogic.Inference.Abstractions.md" Pack="true" PackagePath="README.md" />
+    <None Include="_PackageFiles\SCFirstOrderLogic-128.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SCFirstOrderLogic" Version="8.0.0-pre.3" />
   </ItemGroup>
 
 </Project>

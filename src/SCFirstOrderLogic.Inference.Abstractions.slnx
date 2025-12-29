@@ -9,9 +9,6 @@
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
-    <File Path="Directory.Build.props" />
-    <File Path="SCFirstOrderLogic-128.png" />
-    <File Path="SCFirstOrderLogic-32.png" />
   </Folder>
   <Project Path="SCFirstOrderLogic.Inference.Abstractions/SCFirstOrderLogic.Inference.Abstractions.csproj" Id="45a002a1-0614-476a-8578-85dae8756c96" />
 </Solution>
